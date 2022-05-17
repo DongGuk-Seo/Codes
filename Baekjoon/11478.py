@@ -15,8 +15,5 @@ a = input()
 l = []
 for i in range(1,len(a)+1):
     for o in range(1,len(a)+1):
-        if o+i-3 == len(a):
-            continue
-        else:
-            l.append(a[o-1:o+i-1])
+        l.append(a[o-1:o+i-1])
 print(len(set(l)))
