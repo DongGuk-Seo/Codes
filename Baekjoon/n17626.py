@@ -1,24 +1,19 @@
-l = []
-for i in range(1,int(50000**0.5)+1):
-    l.append(i**2)
 n = int(input())
 c = 4
-for i in range(int(n**0.5),0,-1):
-    x = n - l[i-1]
-    if x == 0:
+for i in range(int(n**0.5),int((n//4)**0.5),-1):
+    if i*i == n:
         c = 1
         break
     else:
-        for o in range(int(x**0.5),0,-1):
-            y = x - l[o-1]
-            if y == 0:
+        x = n - i*i
+        for o in range(int(x**0.5),int((x//3)**0.5),-1):
+            if o*o == x:
                 c = 2
                 break
             else:
-                for p in range(int(y**0.5),0,-1):
-                    z = y - l[p-1]
-                    print(x,y,z)
-                    if z == 0:
+                y = n - i*i - o*o
+                for p in range(int(y**0.5),int((y//2)**0.5),-1):
+                    if p*p == y:
                         c = 3
                         break
 print(c)
