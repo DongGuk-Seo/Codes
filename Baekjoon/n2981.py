@@ -18,13 +18,17 @@
 # 첫째 줄에 가능한 M을 공백으로 구분하여 모두 출력한다. 이때, M은 증가하는 순서이어야 한다.
 
 import sys
-
 input = sys.stdin.readline
 n = int(input())
 l = [int(input()) for i in range(n)]
 t = set()
-for i in range(2,min(l)+1):
+for i in range(min(l)+1,0,-1):
+    tst = True
     for x in l:
-        if (x % i) != 0:
-            t.add(x%i)
+        if (x-i) % i != 0:
+            tst = False
+        else:
+            pass
+    if tst == True:
+        t.add(i)
 print(t)
