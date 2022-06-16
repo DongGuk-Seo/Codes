@@ -8,3 +8,10 @@
 
 # 출력
 # 총 N개의 수 NGE(1), NGE(2), ..., NGE(N)을 공백으로 구분해 출력한다.
+
+n = int(input())
+l = list(map(int,input().split()))
+check = 0
+for x in range(n-1):
+    check = l[x]
+    
