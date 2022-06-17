@@ -9,17 +9,17 @@
 
 n = int(input())
 l = [4,7]
-c = 0
-temp = []
-while n != c:
-    tem = []
-    for i in l:
-        tem.append(i)
-        c += 1
-        if c == n:
-            break
-    temp = tem
-4
+c = 2
+t = 2
+while True:
+    c += 2**t
+    t += 1
+    if c > n:
+        c -= 2**(t-1)
+        break
+print(c)
+print(t)
+4 
 7
 44
 47
