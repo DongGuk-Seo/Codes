@@ -15,11 +15,18 @@
 # 첫째 줄부터 N번째 줄까지 별을 출력한다.
 
 n = int(input())
-l = ['*']*4+['']+['*']*4
-def star (n):
-    for i in l:
-        for o in star_l:
-            if i == '*':
-                print(o,end='')
-    return
-star(9)
+def star(n):
+    if n == 3:
+        return ['***','* *','***']
+    else:
+        stars = star(n//3)
+        l = []
+        for s in stars:
+            l.append(s*3)
+        for num in stars:
+            l.append(num + ' '*(n//3) + num)
+        for s in stars:
+            l.append(s*3)
+        return l
+for x in star(n):
+    print(x)
