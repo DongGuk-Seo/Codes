@@ -14,4 +14,3 @@ l = list(map(int,input().split()))
 check = 0
 for x in range(n-1):
     check = l[x]
-    

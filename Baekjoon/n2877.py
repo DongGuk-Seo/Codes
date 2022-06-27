@@ -8,10 +8,10 @@
 # 첫째 줄에 창영이가 좋아하는 숫자 중 K번째 작은 수를 출력한다.
 
 n = int(input())
-l = ['4','7']
+l = [True,False]
 c = 2
 t = ''
-temp = ['4','7']
+temp = [True,False]
 if n == 1:
     print(4)
 elif n == 2:
@@ -28,7 +28,7 @@ else:
             if c == n:
                 break
         if c == n:
-        temp = tem
+            temp = tem
     print(tem[-1])
 
 4 
