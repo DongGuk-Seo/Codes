@@ -21,14 +21,21 @@ import sys
 input = sys.stdin.readline
 n = int(input())
 l = [int(input()) for i in range(n)]
-t = set()
-for i in range(min(l)+1,0,-1):
+t = []
+for i in range(2,min(l)+2):
+    chck = False
     tst = True
     for x in l:
-        if (x-i) % i != 0:
+        if chck == False:
+            b = x % i
+            chck = True
+        a = x % i
+        if a != b:
             tst = False
+            break
         else:
             pass
+        b = a
     if tst == True:
-        t.add(i)
-print(t)
+        t.append(i)
+print(*t)
