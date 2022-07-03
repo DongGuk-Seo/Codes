@@ -12,7 +12,15 @@
 
 n, m = map(int,input().split())
 n_l = [i for i in range(1,n+1)]
-chk_l = [True for i in range(1,n+1)]
-l = []
-def back (x):
-    a
+chk_l = [False for i in range(n)]
+
+def back(x,num_l,chk_other):
+    for i in range(1,x+1):
+        
+def track(chk, num_l, m):
+    for i in num_l:
+        l = [i]
+        for o in range(m):
+            l += back()
+        chk[i-1] = True
+    print(*l)        
