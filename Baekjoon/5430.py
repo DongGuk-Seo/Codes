@@ -21,3 +21,55 @@
 # 출력
 # 각 테스트 케이스에 대해서, 입력으로 주어진 정수 배열에 함수를 수행한 결과를 출력한다. 만약, 에러가 발생한 경우에는 error를 출력한다.
 
+import sys
+input = sys.stdin.readline
+
+
+n = int(input())
+for i in range(n):
+    orders = list(input())
+    numb = int(input())
+    error = False
+    rev = False
+    nums = input().replace('[','').replace(']','').strip()
+    if nums == '':
+        nums = []
+        for order in orders:
+            if order == 'D':
+                numb -= 1
+                if numb < 0:
+                    error = True
+                    break
+    else:
+        nums = list(map(int,nums.split(',')))
+        for order in orders:
+            if order == 'D':
+                numb -= 1
+                if numb < 0:
+                    error = True
+                    break
+                else:
+                    if rev == True:
+                        nums.pop()
+                    else:
+                        nums.remove(nums[0])
+            else:
+                if rev == False:
+                    rev = True
+                else:
+                    rev = False
+    if error == True:
+        print('error')
+    else:
+        if nums == []:
+            print('[]')
+        elif rev == False:
+            print('[',end='')
+            for i in nums[::-1][:-1]:
+                print(i,end=',')
+            print(nums[::-1][-1],end=']\n')
+        else:
+            print('[',end='')
+            for i in nums[:-1]:
+                print(i,end=',')
+            print(nums[-1],end=']\n')
