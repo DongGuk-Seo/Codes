@@ -22,17 +22,19 @@
 # 첫째 줄에 영식이가 만들 수 있는 사면체 개수의 최솟값을 출력한다.
 
 n = int(input())
-c, c_plus,total = 1, 1, 1
+c, total = 1, 0
 l = []
-ans = 0
-while c <= n:
+dp = [2**8] * (n+1)
+while n >= total:
+    total += (c*(c+1))//2
     l.append(total)
-    c_plus += 1
-    c += c_plus
-    total += c
-while n != 0:    
-    for x in l[::-1]:
-        if n >= x:
-            n -= x
-            ans += 1
-print(ans)
+    c += 1
+for i in range(1,n+1):
+    for x in l:
+        if x == i:
+            dp[i] = 1
+            break
+        if x > i:
+            break
+        dp[i] = min(dp[i], 1 + dp[i - x])
+print(dp[n])
