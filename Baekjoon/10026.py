@@ -14,6 +14,10 @@
 
 # 그림이 입력으로 주어졌을 때, 적록색약인 사람이 봤을 때와 아닌 사람이 봤을 때 구역의 수를 구하는 프로그램을 작성하시오.
 
+import sys
+sys.setrecursionlimit(5000)
+input = sys.stdin.readline
+
 n = int(input())
 n_list = []
 an_list = []
@@ -25,23 +29,20 @@ n_visit = [[0 for i in range(n)] for i in range(n)]
 an_visit = [[0 for i in range(n)] for i in range(n)]
 
 def spread (area,x,y,vt,chk):
-    try:
-        if vt[x][y] == 1:
+    if vt[x][y] == 1:
+        return
+    else:
+        if area[x][y] == chk:
+            vt[x][y] = 1
+            for a in range(-1,2,2):
+                if x+a >= 0 and x+a <= n-1:
+                    spread(area,x+a,y,vt,chk)
+            for b in range(-1,2,2):
+                if y+b >= 0 and y+b <= n-1:
+                    spread(area,x,y+b,vt,chk)
             return
         else:
-            if area[x][y] == chk:
-                vt[x][y] = 1
-                for a in range(-1,2,2):
-                    if x+a >= 0:
-                        spread(area,x+a,y,vt,chk)
-                for b in range(-1,2,2):
-                    if y+b >= 0:
-                        spread(area,x,y+b,vt,chk)
-                return
-            else:
-                return
-    except:
-        pass
+            return
 
 def check (area, vst, num):
     v = 0
@@ -51,10 +52,10 @@ def check (area, vst, num):
                 vst[x][y] = 1
                 chk = area[x][y]
                 for a in range(-1,2,2):
-                    if x+a >= 0:
+                    if x+a >= 0 and x+a <= num-1:
                         spread(area,x+a,y,vst,chk)
                 for b in range(-1,2,2):
-                    if y+b >= 0:
+                    if y+b >= 0 and y+b <= num-1:
                         spread(area,x,y+b,vst,chk)
                 v += 1
             else:
