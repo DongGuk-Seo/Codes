@@ -18,36 +18,35 @@ input = sys.stdin.readline
 n = int(input())
 for _ in range(n):
     m = int(input())
-    max_heap = []
+    id = [0] * 1000000
+    max_heap, min_heap = [], []
     heapq.heapify(max_heap)
-    min_heap = []
     heapq.heapify(min_heap)
-    num = 0
-    d = {}
-    for _ in range(m):
+    for i in range(m):
         a,b = input().split()
+        b = int(b)
         if a == 'I':
-            heapq.heappush(max_heap,-int(b))
-            heapq.heappush(min_heap,int(b))
-            num += 1
+            heapq.heappush(max_heap,[-b,i])
+            heapq.heappush(min_heap,[b,i])
+            id[i] = 1
         else:
-            if num > 0:
-                num -= 1
-                if int(b) == 1:
-                    a = heapq.heappop(max_heap)
-                    if a not in d.keys():
-                        d[a] = 1
-                    else:
-                        d[a] += 1
-                else: 
-                    b = heapq.heappop(min_heap) 
-                    if b not in d.keys():
-                        d[b] = 1
-                    else:
-                        d[b] += 1
+            if b == -1:
+                while min_heap and not id[min_heap[0][1]]:
+                    heapq.heappop(min_heap)
+                if min_heap:
+                    id[min_heap[0][1]] = 0
+                    heapq.heappop(min_heap)
             else:
-                continue
-    if num == 0:
+                while max_heap and not id[max_heap[0][1]]:
+                    heapq.heappop(max_heap)
+                if max_heap:
+                    id[max_heap[0][1]] = 0
+                    heapq.heappop(max_heap)
+    while min_heap and not id[min_heap[0][1]]:
+        heapq.heappop(min_heap)
+    while max_heap and not id[max_heap[0][1]]:
+        heapq.heappop(max_heap)
+    if min(len(min_heap),len(max_heap)) == 0:
         print('EMPTY')
     else:
-        print(-(max_heap[0]),min_heap[0])
+        print(-(max_heap[0][0]),min_heap[0][0])
