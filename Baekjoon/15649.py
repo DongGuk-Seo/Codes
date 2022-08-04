@@ -11,16 +11,16 @@
 # 수열은 사전 순으로 증가하는 순서로 출력해야 한다.
 
 n, m = map(int,input().split())
-n_l = [i for i in range(1,n+1)]
-chk_l = [False for i in range(n)]
+l = []
 
-def back(x,num_l,chk_other):
-    for i in range(1,x+1):
-        
-def track(chk, num_l, m):
-    for i in num_l:
-        l = [i]
-        for o in range(m):
-            l += back()
-        chk[i-1] = True
-    print(*l)        
+def back():
+    if len(l) == m:
+        print(*l)
+        return
+    else:
+        for x in range(1,n+1):
+            if x not in l:
+                l.append(x)
+                back()
+                l.pop()
+back()
