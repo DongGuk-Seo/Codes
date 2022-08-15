@@ -20,16 +20,16 @@
 # 출력
 # 각 테스트 케이스에 대해서, 케이스 번호를 출력하고 n1이 짝수라면 'even', 홀수라면 'odd'를 출력하고, n4를 출력한다.
 
+num = 1
 while True:
-    l = []
-    l.append(int(input()))
-    c = 0
-    if l[0] == 0:
+    x = int(input())
+    if x == 0:
         break
     else:
-        while True:    
-            if l[c] % 2 == 1:
-                print(l.append((l[c]+1)//2))
-            else:
-                print(a//2)
-    
+        n_ = 3 * x
+        n__ = n_//2 if n_ % 2 == 0 else (n_+1)//2
+        n___ = 3 * n__
+        n____ = n___ // 9
+        s = 'even' if n_ % 2 == 0 else 'odd'
+        print(f'{num}. {s} {n____}')
+        num += 1

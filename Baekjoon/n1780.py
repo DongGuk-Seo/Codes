@@ -18,35 +18,13 @@ l = [list(map(int,input().split())) for _ in range(n)]
 m = 0
 z = 0
 p = 0
-c = 1
-cc = 0
-for i in l:
-    for o in i:
-        if o == 0:
-            z += 1
-        elif o == 1:
-            p += 1
-        else:
-            m += 1
-else:
-    while True:
-        c *= 3
-        for o in range(n//c):
-            for i in range(n//c):
-                tem = []
-                for x in l[o*c:(o+1)*c]:
-                    tem += x[i*c:(i+1)*c]
-                if tem.count(1) == c*c:
-                    p -= c*c-(c**cc)
-                elif tem.count(0) == c*c:
-                    z -= c*c-(c**cc)
-                elif tem.count(-1) == c*c:
-                    m -= c*c-(c**cc)
-                else:
-                    pass
-        cc += 1
-        if c == n:
-            break
-    print(m)
-    print(z)
-    print(p)
+for _ in range(1, n//3 + 1):
+    for x in l:
+        s = None
+        if len(set(x)) == 1:
+            if s == None:
+                s = x.pop()
+            else:
+                break
+    if s != None:
+        1
