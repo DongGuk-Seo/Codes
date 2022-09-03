@@ -18,23 +18,14 @@
 # 두 번째 줄부터 수행 과정을 출력한다. 두 번째 줄부터 K개의 줄에 걸쳐 두 정수 A B를 빈칸을 사이에 두고 출력하는데, 이는 A번째 탑의 가장 위에 있는 원판을 B번째 탑의 가장 위로 옮긴다는 뜻이다.
 
 n = int(input())
-pl = [[i for i in range(n,0,-1)],[],[]]
 
-def hanoi(x):
-    if x[1] == x[2]:
-        x[2].append(x[0].pop())
-        print(1,3)
-        print(x)
-        hanoi(x)
+def hanoi(n,start,end):
+    if n == 1:
+        print(start,end)
     else:
-        fir = x[0]
-        sec = x[1]
-        tir = x[2]
-        if sec == []:
-            x[1].append(x[0].pop())
-            print(1,2)
-            print(x)
-            hanoi(x)
-        else:
-            1
-hanoi(pl)
+        hanoi(n-1,start,6-start-end)
+        print(start,end)
+        hanoi(n-1,6-start-end,end)
+        
+print(2**n-1)
+hanoi(n,1,3)
