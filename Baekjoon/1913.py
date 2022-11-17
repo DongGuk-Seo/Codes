@@ -24,7 +24,7 @@ ans = []
 pos = [n//2,n//2]
 array[pos[0]][pos[1]] = 1
 if target == 1:
-    ans.append([pos[0],pos[1]])
+    ans.append([pos[0]+1,pos[1]+1])
 
 def circle(start,point,target):
     startpoint = array[start[0]][start[1]]
